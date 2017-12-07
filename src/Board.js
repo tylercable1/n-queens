@@ -90,23 +90,15 @@
     },
 
     // test if any rows on this board contain conflicts
-    hasAnyRowConflicts: function() {
-      var board = this.rows();
-      var collision = false;
-      for (var i = 0; i < board.length; i++) {
-        if (this.hasRowConflictAt(board[i])) {
-          collision = true;
-        }
-      }
-      return collision;
-    },
-
-    // test if a specific row on this board contains a conflict
-    // hasRowConflictAt: function(rowIndex) {
-    //   //pull desired row from board get
-    //   let currentRow = this.get(rowIndex);
-    //   //check row for conflict
-    //   return this.conflictIn(currentRow);
+    // hasAnyRowConflicts: function() {
+    //   var board = this.rows();
+    //   var collision = false;
+    //   for (var i = 0; i < board.length; i++) {
+    //     if (this.hasRowConflictAt(board[i])) {
+    //       collision = true;
+    //     }
+    //   }
+    //   return collision;
     // },
 
     // test if any rows on this board contain conflicts
