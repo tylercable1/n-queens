@@ -182,8 +182,6 @@
       while (currentRow < n) {
         if (currentCol < n) {
           if (this.attributes[currentRow][currentCol]) {
-console.log(currentCol + ' < - Col')
-console.log(this.attributes[currentRow][currentCol])
             count++;
           }
         }
