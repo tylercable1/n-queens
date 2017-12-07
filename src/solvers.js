@@ -12,7 +12,7 @@
 
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
-window.findNRooksSolution = function(n) {
+window.findNRooksSolution = _.memoize(function(n) {
   var board = new Board({n: n});
   var arrObj = board.attributes;
   var solution = [];
@@ -25,10 +25,10 @@ window.findNRooksSolution = function(n) {
   }
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
-};
+});
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
-window.countNRooksSolutions = function(n) {
+window.countNRooksSolutions = _.memoize(function(n) {
   var solutionCount = 0;
   var board = new Board({n: n});
   
@@ -49,10 +49,10 @@ window.countNRooksSolutions = function(n) {
   
   console.log('Number of solutions for ' + n + ' rooks: ' + solutionCount);
   return solutionCount;
-};
+});
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
-window.findNQueensSolution = function(n) {
+window.findNQueensSolution = _.memoize(function(n) {
   var solution = [];
   var board = new Board({n: n});
   var findSolutions = function(row) {
@@ -84,10 +84,10 @@ window.findNQueensSolution = function(n) {
   
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
-};
+});
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
-window.countNQueensSolutions = function(n) {
+window.countNQueensSolutions = _.memoize(function(n) {
   var solutionCount = 0;
   var board = new Board({n: n});
   var findSolutions = function(row) {
@@ -113,4 +113,4 @@ window.countNQueensSolutions = function(n) {
 
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
-};
+});

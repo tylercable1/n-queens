@@ -78,33 +78,21 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      var board = this.rows();
-      var currentRow = board[rowIndex];
+      
+      var currentRow = this.get(rowIndex);
       var counter = 0;
       for (var row = 0; row < currentRow.length; row++) {
-        if (currentRow[row]) {
-          counter++;
-        }
+        counter += currentRow[row];
+        return counter > 1;
       }
-      return counter > 1;
     },
 
-    // test if any rows on this board contain conflicts
-    // hasAnyRowConflicts: function() {
-    //   var board = this.rows();
-    //   var collision = false;
-    //   for (var i = 0; i < board.length; i++) {
-    //     if (this.hasRowConflictAt(board[i])) {
-    //       collision = true;
-    //     }
-    //   }
-    //   return collision;
-    // },
+
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
       //iterate through all rows in board
-      for (let row = 0; row < this.attributes.n; row++) {
+      for (let row = 0; row < this.get('n'); row++) {
         //check each row for conflicts using hasRowConflictAt
         if (this.hasRowConflictAt(row)) {
           //conflict found, return true
@@ -122,22 +110,23 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      var board = this.rows();
+      var size = this.get('n');
       var col = 0;
-      for (var i = 0; i < board.length; i++) {
-        if (board[i][colIndex]) {
-          col++;
+      for (var i = 0; i < size; i++) {
+        var row = this.get(i);
+        col += row[colIndex];
+        if (col > 1) {
+          return true;
         }
       } 
-      return col > 1;
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      var board = this.rows();
+      var size = this.get('n');
       var collision = false;
 
-      for (var i = 0; i < board.length; i++) {
+      for (var i = 0; i < size; i++) {
         if (this.hasColConflictAt(i)) {
           collision = true;
         }
