@@ -83,7 +83,9 @@
       var counter = 0;
       for (var row = 0; row < currentRow.length; row++) {
         counter += currentRow[row];
-        return counter > 1;
+        if (counter > 1) {
+          return true; 
+        }
       }
     },
 
